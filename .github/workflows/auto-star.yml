@@ -1,0 +1,20 @@
+# 粘贴到刚创建的auto-star.yml  
+name: Auto Star  
+on:  
+  workflow_dispatch:  
+
+jobs:  
+  star:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - name: Star with Account 1  
+        env:  
+          GH_TOKEN: ${{ secrets.GH_TOKEN_1 }}  
+        run: |  
+          curl -X PUT -H "Authorization: token $GH_TOKEN" https://api.github.com/user/starred/目标仓库名  
+
+      - name: Star with Account 2  
+        env:  
+          GH_TOKEN: ${{ secrets.GH_TOKEN_2 }}  
+        run: |  
+          curl -X PUT -H "Authorization: token $GH_TOKEN" https://api.github.com/user/starred/目标仓库名  
